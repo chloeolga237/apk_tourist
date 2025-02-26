@@ -10,7 +10,7 @@ class FirstPageScreen extends StatefulWidget {
 }
 
 class _FirstPageScreenState extends State<FirstPageScreen> {
-  // État des icônes
+  // State of the icons
   Map<String, bool> likedDestinations = {};
   Map<String, bool> favoriteDestinations = {};
 
@@ -30,7 +30,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
               ),
               SizedBox(height: 8),
               Text(
-                'Cookies are small text files that are used to store small pieces of information. They are stored on your device when the website is loaded on your browser. These cookies help us make the website function properly, make it more secure, and provide better user experience.',
+                'Cookies are small text files used to store small pieces of information. They are stored on your device when the website is loaded in your browser. These cookies help us make the website function properly, make it more secure, and provide a better user experience.',
               ),
               SizedBox(height: 16),
               Text(
@@ -57,13 +57,13 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop(); // Refuser les cookies
+              Navigator.of(context).pop(); // Decline cookies
             },
             child: Text('Decline'),
           ),
           TextButton(
             onPressed: () {
-              Navigator.of(context).pop(); // Accepter les cookies
+              Navigator.of(context).pop(); // Accept cookies
             },
             child: Text('Accept'),
           ),
@@ -84,16 +84,16 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
         actions: [
           PopupMenuButton<String>(
             onSelected: (value) {
-              // Gérer les actions de menu ici
+              // Handle menu actions here
             },
             itemBuilder: (context) => [
-              PopupMenuItem(value: 'voyages', child: Text('Voyages')),
-              PopupMenuItem(value: 'avis', child: Text('Écrire un avis')),
-              PopupMenuItem(value: 'profil', child: Text('Profil')),
-              PopupMenuItem(value: 'reservations', child: Text('Réservations')),
+              PopupMenuItem(value: 'trips', child: Text('Trips')),
+              PopupMenuItem(value: 'write_review', child: Text('Write a Review')),
+              PopupMenuItem(value: 'profile', child: Text('Profile')),
+              PopupMenuItem(value: 'reservations', child: Text('Reservations')),
               PopupMenuItem(value: 'messages', child: Text('Messages')),
-              PopupMenuItem(value: 'infos_compte', child: Text('Informations sur le compte')),
-              PopupMenuItem(value: 'deconnexion', child: Text('Se déconnecter')),
+              PopupMenuItem(value: 'account_info', child: Text('Account Information')),
+              PopupMenuItem(value: 'logout', child: Text('Log Out')),
             ],
           ),
         ],
@@ -101,22 +101,22 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Votre contenu existant
+            // Your existing content
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Publicité',
+                'Advertisement',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Lieux où aller, choses à faire, hôtels...',
+                'Places to go, things to do, hotels...',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
             ),
-            // Barre de recherche
+            // Search bar
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Row(
@@ -124,7 +124,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Recherchez...',
+                        hintText: 'Search...',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -132,30 +132,30 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
                   SizedBox(width: 8),
                   DropdownButton<String>(
                     items: [
-                      DropdownMenuItem(value: 'Hôtels', child: Text('Hôtels')),
-                      DropdownMenuItem(value: 'Choses à faire', child: Text('Choses à faire')),
+                      DropdownMenuItem(value: 'Hotels', child: Text('Hotels')),
+                      DropdownMenuItem(value: 'Things to Do', child: Text('Things to Do')),
                       DropdownMenuItem(value: 'Restaurants', child: Text('Restaurants')),
-                      DropdownMenuItem(value: 'Vols', child: Text('Vols')),
-                      DropdownMenuItem(value: 'Locations de vacances', child: Text('Locations de vacances')),
+                      DropdownMenuItem(value: 'Flights', child: Text('Flights')),
+                      DropdownMenuItem(value: 'Vacation Rentals', child: Text('Vacation Rentals')),
                     ],
                     onChanged: (value) {
-                      // Gérer le changement de sélection
+                      // Handle selection change
                     },
-                    hint: Text('Sélectionner'),
+                    hint: Text('Select'),
                   ),
                 ],
               ),
             ),
-            // Destinations populaires
+            // Popular Destinations
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Destinations Populaires',
+                'Popular Destinations',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
             SizedBox(
-              height: 200, // Hauteur pour les images
+              height: 200, // Height for images
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: [
@@ -166,18 +166,18 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
                 ],
               ),
             ),
-            // Section des recommandations
+            // Recommendations section
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                'Recommandations',
+                'Recommendations',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             ),
-            // Liste d'avis ou recommandations
-            _buildRecommendationTile('Visitez la Tour Eiffel', 4.5),
-            _buildRecommendationTile('Explorez Central Park', 4.7),
-            _buildRecommendationTile('Dégustez des sushis à Tokyo', 4.9),
+            // List of reviews or recommendations
+            _buildRecommendationTile('Visit the Eiffel Tower', 4.5),
+            _buildRecommendationTile('Explore Central Park', 4.7),
+            _buildRecommendationTile('Enjoy sushi in Tokyo', 4.9),
           ],
         ),
       ),
@@ -188,7 +188,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
         child: Column(
           children: [
             Text(
-              'Informations de contact',
+              'Contact Information',
               style: TextStyle(color: Colors.white, fontSize: 16),
             ),
             SizedBox(height: 8),
@@ -198,7 +198,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
             ),
             SizedBox(height: 4),
             Text(
-              'Téléphone: +33 1 23 45 67 89',
+              'Phone: +33 1 23 45 67 89',
               style: TextStyle(color: Colors.white),
             ),
           ],
@@ -254,7 +254,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
                     IconButton(
                       icon: Icon(Icons.more_vert, color: Colors.white),
                       onPressed: () {
-                        // Action pour les options
+                        // Action for options
                         if (kDebugMode) {
                           print('Options for $title');
                         }
@@ -279,7 +279,7 @@ class _FirstPageScreenState extends State<FirstPageScreen> {
       title: Text(title),
       trailing: Text(rating.toString(), style: TextStyle(color: Colors.green)),
       onTap: () {
-        // Action pour la recommandation
+        // Action for the recommendation
       },
     );
   }

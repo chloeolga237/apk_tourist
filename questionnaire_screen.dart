@@ -1,7 +1,7 @@
 // screens/questionnaire_screen.dart
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'firstpage_screen.dart'; // Importez le fichier FirstPageScreen
+import 'firstpage_screen.dart'; // Import the FirstPageScreen file
 
 class QuestionnaireScreen extends StatefulWidget {
   const QuestionnaireScreen({super.key});
@@ -26,16 +26,16 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              // Logique pour gérer le refus des cookies
+              // Logic to handle cookie rejection
               Navigator.of(context).pop();
             },
             child: Text('Decline'),
           ),
           TextButton(
             onPressed: () {
-              // Logique pour gérer l'acceptation des cookies
+              // Logic to handle cookie acceptance
               Navigator.of(context).pop();
-              // Vous pouvez aussi enregistrer le consentement ici si nécessaire
+              // You can also save consent here if necessary
             },
             child: Text('Accept'),
           ),
@@ -46,18 +46,18 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // Logique pour soumettre les données
+      // Logic to submit the data
       if (kDebugMode) {
-        print('Nom: ${nameController.text}');
-        print('Ville: ${cityController.text}');
-        print('Option choisie: $selectedOption');
+        print('Name: ${nameController.text}');
+        print('City: ${cityController.text}');
+        print('Selected option: $selectedOption');
       }
 
-      // Navigation vers FirstPageScreen
+      // Navigation to FirstPageScreen
       Navigator.of(context).push(
         MaterialPageRoute(builder: (context) => FirstPageScreen()),
       ).then((_) {
-        // Afficher le pop-up d'acceptation des cookies après la navigation
+        // Show the cookie consent dialog after navigation
         _showCookieConsentDialog();
       });
     }
@@ -76,12 +76,12 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
               TextFormField(
                 controller: nameController,
                 decoration: InputDecoration(
-                  labelText: 'Comment devrions-nous vous appeler ?',
+                  labelText: 'What should we call you?',
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Veuillez entrer votre nom.';
+                    return 'Please enter your name.';
                   }
                   return null;
                 },
@@ -90,7 +90,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
               TextFormField(
                 controller: cityController,
                 decoration: InputDecoration(
-                  labelText: 'Où habitez-vous ? (Optionnel)',
+                  labelText: 'Where do you live? (Optional)',
                   border: OutlineInputBorder(),
                 ),
               ),
@@ -98,7 +98,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
               DropdownButtonFormField<String>(
                 value: selectedOption,
                 decoration: InputDecoration(
-                  labelText: 'Choisissez une option',
+                  labelText: 'Choose an option',
                   border: OutlineInputBorder(),
                 ),
                 items: [
@@ -113,7 +113,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
                 },
                 validator: (value) {
                   if (value == null) {
-                    return 'Veuillez choisir une option.';
+                    return 'Please choose an option.';
                   }
                   return null;
                 },
@@ -121,7 +121,7 @@ class _QuestionnaireScreenState extends State<QuestionnaireScreen> {
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _submitForm,
-                child: const Text('Soumettre'),
+                child: const Text('Submit'),
               ),
             ],
           ),
